@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>IMDB</title>
+</head>
+
+<body>
+
+  <!-- Artist Select Box -->
+  <form id="artist-form">
+
+    <!-- Label for Text Box -->
+    <label for="artist-input">Choose Your Movie</label>
+
+    <!-- Text Input Box -->
+    <input type="text" id="artist-input"><br>
+
+    <!-- Submit Button -->
+    <input id="select-artist" type="submit" value="GO!">
+  </form>
+
+  <!-- Artist Information -->
+  <div id="artist-div"></div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function searchMovie(title) {
+    // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
+    var queryURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      // Printing the entire object to console
+      console.log(response);
+      console.log("------------------------------------------------")
+      console.log("Title: " + response.Title)
+      console.log("Year: " + response.Year)
+      console.log("IMDB Rating: " + response.imdbRating)
+      console.log("Rotten Tomatoes Rating: " + response.Metascore)
+      console.log("Country: " + response.Country)
+      console.log("Language: " + response.Language)
+      console.log("Plot: " + response.Plot)
+      console.log("Actors: " + response.Actors)
+
+      console.log("------------------------------------------------")
+
+
+      $("#artist-div").empty();
+    });
+  }
+  // Event handler for user clicking the select-artist button
+  $("#select-artist").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the artist name
+    var title = $("#artist-input").val().trim();
+    // Running the searchBandsInTown function(passing in the artist as an argument)
+    searchMovie(title);
+  });
+</script>
+
+</html>
