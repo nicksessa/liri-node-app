@@ -38,14 +38,14 @@
     }).then(function(response) {
 
       // Printing the entire object to console
-      console.log(response);
+      //console.log(response.data);
 
 
-      for (var i = 0; i < response.length; i++) {
+      for (var i = 0; i < response.data.length; i++) {
 
-        console.log("Venue Name: " + response[i].venue.name)
-        console.log("Venue Location: " + response[i].venue.city + ", " + response[i].venue.region)
-        console.log("Date: " + response[i].datetime)
+        console.log("Venue Name: " + response.data[i].venue.name)
+        console.log("Venue Location: " + response.data[i].venue.city + ", " + response[i].venue.region)
+        console.log("Date: " + response.data[i].datetime)
         console.log("------------------------------------------------")
       }
 
