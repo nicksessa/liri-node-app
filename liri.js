@@ -15,21 +15,21 @@ checkParm()
 function checkParm() {
     if (parm1 == "concert-this") {
         if (parm2) {
-            logFile(parm1)
+            logFile(parm1, parm2)
             concertThis()
         }
     } else if (parm1 == "spotify-this-song") {
         if (parm2) {
-            logFile(parm1)
+            logFile(parm1, parm2)
             spotifyThis()
         }
     } else if (parm1 == "movie-this") {
         if (parm2) {
-            logFile(parm1)
+            logFile(parm1, parm2)
             movieThis()
         }
     } else if (parm1 == "do-what-it-says") {
-        logFile(parm1)
+        logFile(parm1, "")
         readFile()
     } else {
         return
@@ -139,9 +139,14 @@ function readFile() {
     })
 }
 
-function logFile(text) {
+function logFile(text, text2) {
     var fs = require("fs")
-    fs.appendFile("./log.txt", text, function(error) {
+    var curDate = moment().format("YYYY-MM-DD HH:mm:SS")
+    //console.log(`[${curDate}]`)
+
+    var newText = `[${curDate}] ${text} ${text2}\n`
+
+    fs.appendFile("./log.txt", newText, function (error) {
         if (error) {
             return console.log("Error writing to file! " + error)
         }
