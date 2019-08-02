@@ -8,25 +8,32 @@ var Spotify = require("node-spotify-api")
 var parm1 = process.argv[2];
 var parm2 = process.argv[3];
 
-console.log("Parm1: " + parm1)
+checkParm()
+
+//console.log("Parm1: " + parm1)
 //console.log("Parm2: " + parm2)
-
-if (parm1 == "concert-this") {
-    if (parm2) {
-        concertThis()
+function checkParm() {
+    if (parm1 == "concert-this") {
+        if (parm2) {
+            logFile(parm1)
+            concertThis()
+        }
+    } else if (parm1 == "spotify-this-song") {
+        if (parm2) {
+            logFile(parm1)
+            spotifyThis()
+        }
+    } else if (parm1 == "movie-this") {
+        if (parm2) {
+            logFile(parm1)
+            movieThis()
+        }
+    } else if (parm1 == "do-what-it-says") {
+        logFile(parm1)
+        readFile()
+    } else {
+        return
     }
-} else if (parm1 == "spotify-this-song") {
-    if (parm2) {
-        spotifyThis()
-    }
-} else if (parm1 == "movie-this") {
-    if (parm2) {
-        movieThis()
-    }
-} else if (parm1 == "do-what-it-says") {
-
-} else {
-    return
 }
 
 function concertThis() {
@@ -113,5 +120,30 @@ function spotifyThis() {
         console.log("Song: " + response.tracks.items[0].name)
         console.log("URL: " + response.tracks.items[0].preview_url)
         console.log("Album: " + response.tracks.items[0].album.name)
+    })
+}
+
+function readFile() {
+    var fs = require("fs")
+    fs.readFile("./random.txt", "utf8", function (error, data) {
+        if (error) {
+            return console.log("Error reading file! " + error)
+        }
+        var output = data.split(",")
+        console.log("New Parm1: " + output[0])
+        console.log("New Parm2: " + output[1])
+        parm1 = output[0]
+        parm2 = output[1]
+
+        checkParm()
+    })
+}
+
+function logFile(text) {
+    var fs = require("fs")
+    fs.appendFile("./log.txt", text, function(error) {
+        if (error) {
+            return console.log("Error writing to file! " + error)
+        }
     })
 }
