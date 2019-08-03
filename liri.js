@@ -11,23 +11,30 @@ var parm2 = process.argv[3];
 
 checkParm()
 
-//console.log("Parm1: " + parm1)
-//console.log("Parm2: " + parm2)
 function checkParm() {
     if (parm1 == "concert-this") {
         if (parm2) {
             logFile(parm1, parm2)
-            concertThis()
+            concertThis(parm2)
+        } else {
+            logFile(parm1, "The Rolling Stones")
+            concertThis("The Rolling Stones")
         }
     } else if (parm1 == "spotify-this-song") {
         if (parm2) {
             logFile(parm1, parm2)
-            spotifyThis()
+            spotifyThis(parm2)
+        } else {
+            logFile(parm1, "Ring of Fire")
+            spotifyThis("Ring of Fire")
         }
     } else if (parm1 == "movie-this") {
         if (parm2) {
             logFile(parm1, parm2)
-            movieThis()
+            movieThis(parm2)
+        } else {
+            logFile(parm1, "The Terminator")
+            movieThis("The Terminator")
         }
     } else if (parm1 == "do-what-it-says") {
         logFile(parm1, "")
@@ -37,9 +44,9 @@ function checkParm() {
     }
 }
 
-function concertThis() {
-    console.log("Parm2: " + parm2)
-    var band = parm2.split(' ').join('+')
+function concertThis(theBand) {
+    //console.log("Parm2: " + parm2)
+    var band = theBand.split(' ').join('+')
 
     axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp").then(
         function (response) {
@@ -68,9 +75,9 @@ function concertThis() {
 }
 
 
-function movieThis() {
-    console.log("Parm2: " + parm2)
-    var title = parm2.split(' ').join('+')
+function movieThis(theMovie) {
+    //console.log("Parm2: " + parm2)
+    var title = theMovie.split(' ').join('+')
     var queryURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy";
 
     axios.get(queryURL).then(
@@ -105,12 +112,12 @@ function movieThis() {
     })
 }
 
-function spotifyThis() {
+function spotifyThis(theSong) {
     // access the key info:
     var spotify = new Spotify(keys.spotify);
 
-    console.log("Parm2: " + parm2)
-    var songName = parm2.split(' ').join('+')
+    //console.log("Parm2: " + parm2)
+    var songName = theSong.split(' ').join('+')
     var queryURL = "https://api.spotify.com/v1/search?q=track: " + songName + "&type=track&limit=10";
 
     spotify.request(queryURL, function (error, response) {
