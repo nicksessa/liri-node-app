@@ -3,6 +3,7 @@ var moment = require("moment")
 var axios = require("axios");
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api")
+var fs = require("fs")
 
 // accept a parameter from the command line:
 var parm1 = process.argv[2];
@@ -124,7 +125,6 @@ function spotifyThis() {
 }
 
 function readFile() {
-    var fs = require("fs")
     fs.readFile("./random.txt", "utf8", function (error, data) {
         if (error) {
             return console.log("Error reading file! " + error)
@@ -140,7 +140,6 @@ function readFile() {
 }
 
 function logFile(text, text2) {
-    var fs = require("fs")
     var curDate = moment().format("YYYY-MM-DD HH:mm:SS")
     //console.log(`[${curDate}]`)
 
