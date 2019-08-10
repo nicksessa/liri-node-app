@@ -111,7 +111,7 @@ function spotifyThis(theSong) {
 ```
 Sample output:
 
-![Image of the spotify-this-song option](./images/spotify-this-song.png)
+![Image of the spotify-this-song option](./images/spotify-this.png)
 
 
 3. `node liri.js movie-this '<movie name here>'`
@@ -251,6 +251,10 @@ function logFile(text, text2) {
     })
 }
 ```
+
+Sample output:
+
+![Image of the log.txt](./images/log.txt.png)
 
 
 ### Bonus Bonus
