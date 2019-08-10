@@ -289,3 +289,10 @@ spotifyThis () {
 
 
 ```
+
+
+
+Sample output:
+
+![Image of the spotify-this.bash](./images/spotify-this-bash.png)
+
