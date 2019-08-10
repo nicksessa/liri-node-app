@@ -7,3 +7,9 @@
 [2019-08-02 16:04:23] concert-this The Rolling Stones
 [2019-08-02 16:13:64] movie-this Idiocracy
 [2019-08-02 16:14:31] movie-this The Terminator
+[2019-08-10 10:10:30] concert-this The Rolling Stones
+[2019-08-10 10:14:55] spotify-this-song Ring of Fire
+[2019-08-10 10:16:66] movie-this High Noon
+[2019-08-10 10:20:10] do-what-it-says 
+[2019-08-10 10:20:12] spotify-this-song "Ring of Fire"
+

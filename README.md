@@ -70,6 +70,11 @@ function concertThis() {
     )
 ```
 
+Sample output:
+
+![Image of the concert-this option](./images/concert-this.png)
+
+
 2. `node liri.js spotify-this-song '<song name here>'`
 
    * This will show the following information about the song in your terminal/bash window
@@ -104,6 +109,10 @@ function spotifyThis(theSong) {
     })
 }
 ```
+Sample output:
+
+![Image of the spotify-this-song option](./images/spotify-this-song.png)
+
 
 3. `node liri.js movie-this '<movie name here>'`
 
@@ -168,6 +177,11 @@ function readFile() {
     })
 }
 ```
+
+Sample output:
+
+![Image of the do-what-it-says option](./images/do-what-it-says.png)
+
 
 5. The driver:
 
